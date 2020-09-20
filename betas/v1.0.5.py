@@ -10,7 +10,7 @@ from tkinter import filedialog
 window = Tk()
 
 window.title("Notepad--")
-window.iconbitmap("icon.ico")
+#window.iconbitmap("icon.ico")
 
 # Set up
 window.configure(bg="#222")
@@ -47,7 +47,7 @@ def _runModule():
 # Run As Lua
 def runLua():
   msgbox("Ran as Lua.", "Successfully ran file.")
-  luaGen = open("minimal_editor/luaexec.lua", "+w")
+  luaGen = open("minimal_luaexec.lua", "+w")
   exec(luaGen.read())
 
 
