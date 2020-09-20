@@ -46,7 +46,7 @@ def _runModule():
 
 # Run As Lua
 def runLua():
-  msgbox("Ran as lua.", subprocess.check_output(['lua', '-l', 'demo', '-e', f'{text_box.get(1.0, END)']))
+  msgbox("Ran as lua.", subprocess.check_output(['lua', '-l', 'demo', '-e', f'{text_box.get(1.0, END)'])))
 # The Input Box
 text_box = ScrolledText(background="#222", foreground="#aaa") # Main Text Box
 
