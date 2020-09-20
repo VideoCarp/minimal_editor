@@ -40,10 +40,13 @@ def openDialog():
   # Write down into text box.
   msgbox("Opened", "File opened successfully.")
 
-
+# Run As Python
 def _runModule():
   msgbox('Output:', eval(text_box.get(1.0, END)))
 
+# Run As Lua
+def runLua():
+  msgbox("Ran as lua.", subprocess.check_output(['lua', '-l', 'demo', '-e', f'{text_box.get(1.0, END)']))
 # The Input Box
 text_box = ScrolledText(background="#222", foreground="#aaa") # Main Text Box
 
@@ -67,12 +70,13 @@ fileMenu.add_command(label="Save", command=saveBox)
 
 windowMenu = Menu(_menu, tearoff=0)
 windowMenu.add_command(label="Run Script as Python", command=_runModule)
+windowMenu.add_command(label="Run Script as Lua", command=runLua)
 windowMenu.add_command(label="Quit", command=window.quit())
 
 _menu.add_cascade(label="File", menu=fileMenu)
 _menu.add_cascade(label="Window", menu=windowMenu)
 
 # West, East, North, South
-_menu.config(menu=menubar)
+window.config(menu=_menu)
 text_box.grid(column=1, row=2)
 window.mainloop()
