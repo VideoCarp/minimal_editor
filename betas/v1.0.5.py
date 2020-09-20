@@ -1,10 +1,10 @@
 # Imports
-import time
+import time; import webbrowser; import subprocess
 from tkinter import *
 from tkinter.scrolledtext import ScrolledText
 from tkinter import messagebox as tkmsg
 from tkinter import filedialog
-import subprocess
+
 
 
 # Initialize Window
@@ -45,6 +45,8 @@ def openDialog():
 def _runModule():
   msgbox('Ran as Python', "Successfully ran file.")
   eval(text_box.get(1.0, END))
+
+
 # Run As Lua
 def runLua():
   msgbox("Ran as Lua.", "Successfully ran file.")
@@ -53,6 +55,21 @@ def runLua():
   subprocess.check_output(['lua', '-l', 'demo', '-', 'minimal_luaexec.lua'])
   luaGen.close()
 
+# HTML
+def html_page():
+  msgbox("HTML", "Ran HTML file successfully.")
+  min_html = open("minimal_html.html", "+w")
+  min_html.write("<!-- minimal_editor -->\n" + text_box.get(1.0, END))
+  min_html.close()
+  webbrowser.open("file://minimal_html.html")
+
+# JavaScript
+def js_page():
+  msgbox("JavaScript", "Ran JavaScript as webpage successfully. Node.js is currently unsupported, manually run.")
+  min_js = open("minimal_js.html", "+w")
+  min_js.write(f"<script>{text_box.get(1.0, END)}</script>")
+  min_js.close()
+  webbrowser.open("file://minimal_js.html")
 
 # The Input Box
 text_box = ScrolledText(background="#222", foreground="#aaa") # Main Text Box
@@ -75,13 +92,14 @@ fileMenu = Menu(_menu, tearoff=0)
 fileMenu.add_command(label="Open", command=openDialog)
 fileMenu.add_command(label="Save", command=saveBox)
 
-windowMenu = Menu(_menu, tearoff=0)
+runMenu = Menu(_menu, tearoff=0)
 windowMenu.add_command(label="Run Script as Python", command=_runModule)
 windowMenu.add_command(label="Run Script as Lua", command=runLua)
-windowMenu.add_command(label="Quit", command=window.quit())
+windowMenu.add_command(label="Run File as Webpage (HTML)", command=html_page)
+windowMenu.add_command(label="Run as JavaScript Page", command=js_page)
 
 _menu.add_cascade(label="File", menu=fileMenu)
-_menu.add_cascade(label="Window", menu=windowMenu)
+_menu.add_cascade(label="Run", menu=runMenu)
 
 # West, East, North, South
 window.config(menu=_menu)
