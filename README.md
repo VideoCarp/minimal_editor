@@ -27,5 +27,6 @@ whenever you attempt to run again as Lua.
 # Disclaimers:
 This editor only uses standard/built-in Python libraries, so `Ctrl+S` for now doesn't work.<br>
 There is probably a way to check for button presses using built-in libraries, but for now, I don't know.<br>
-Feel free to submit a pull request, or issue, if you know how, or find any bugs, for more info, visit CONTRIBUTING.md (it may not be there, but it will be)
+Feel free to submit a pull request, or issue, if you know how, or find any bugs, for more info, visit CONTRIBUTING.md (it may not be there, but it will be)<br>
+
 Discord: https://discord.gg/qMUQKxC
