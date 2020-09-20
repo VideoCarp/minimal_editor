@@ -42,11 +42,15 @@ def openDialog():
 
 # Run As Python
 def _runModule():
-  msgbox('Output:', eval(text_box.get(1.0, END)))
-
+  msgbox('Ran as Python', "Successfully ran file.")
+  eval(text_box.get(1.0, END))
 # Run As Lua
 def runLua():
-  msgbox("Ran as lua.", subprocess.check_output(['lua', '-l', 'demo', '-e', f'{text_box.get(1.0, END)'])))
+  msgbox("Ran as Lua.", "Successfully ran file.")
+  luaGen = open("minimal_editor/luaexec.lua", "+w")
+  exec(luaGen.read())
+
+
 # The Input Box
 text_box = ScrolledText(background="#222", foreground="#aaa") # Main Text Box
 
