@@ -1,6 +1,6 @@
 # Imports
 import time; import webbrowser; import subprocess
-from tkinter import *
+from tkinter import *; import os
 from tkinter.scrolledtext import ScrolledText
 from tkinter import messagebox as tkmsg
 from tkinter import filedialog
@@ -61,7 +61,7 @@ def html_page():
   min_html = open("minimal_html.html", "+w")
   min_html.write("<!-- minimal_editor -->\n" + text_box.get(1.0, END))
   min_html.close()
-  webbrowser.open("file://minimal_html.html")
+  webbrowser.open(f"file://{os.path.realpath('minimal_html.html')}")
 
 # JavaScript
 def js_page():
@@ -69,7 +69,7 @@ def js_page():
   min_js = open("minimal_js.html", "+w")
   min_js.write(f"<script>{text_box.get(1.0, END)}</script>")
   min_js.close()
-  webbrowser.open("file://minimal_js.html")
+  webbrowser.open(f"file://{os.path.realpath('minimal_js.html')}")
 
 # The Input Box
 text_box = ScrolledText(background="#222", foreground="#aaa") # Main Text Box
