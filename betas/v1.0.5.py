@@ -48,7 +48,9 @@ def _runModule():
 def runLua():
   msgbox("Ran as Lua.", "Successfully ran file.")
   luaGen = open("minimal_luaexec.lua", "+w")
+  luaGen.write("-- Minimal Editor created this file" + text_box.get(1.0, END))
   exec(luaGen.read())
+  luaGen.close()
 
 
 # The Input Box
