@@ -4,6 +4,7 @@ from tkinter import *
 from tkinter.scrolledtext import ScrolledText
 from tkinter import messagebox as tkmsg
 from tkinter import filedialog
+import subprocess
 
 
 # Initialize Window
@@ -49,7 +50,7 @@ def runLua():
   msgbox("Ran as Lua.", "Successfully ran file.")
   luaGen = open("minimal_luaexec.lua", "+w")
   luaGen.write("-- Minimal Editor created this file" + text_box.get(1.0, END))
-  exec(luaGen.read())
+  subprocess.check_output(['lua', '-l', 'demo', '-', 'minimal_luaexec.lua'])
   luaGen.close()
 
 
