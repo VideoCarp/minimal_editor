@@ -10,6 +10,7 @@ Don't trust the exe file, or on another OS? Follow these steps:
 - Extract ZIP archive.
 - Create shortcut to main.py at desktop, through the directory you had it installed.
 <br>
+
 # Installing the exe file:
 Follow these steps, to have the best experience from the app:<br>
 - Install .exe file (otherwise follow header above)
