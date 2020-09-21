@@ -74,6 +74,13 @@ def js_page():
 # The Input Box
 text_box = ScrolledText(background="#222", foreground="#aaa") # Main Text Box
 
+def bashRun():
+  msgbox("Run Batch", "Batch file ran successfully.")
+  file_batch = open("minimal_editor.bat", "+w")
+  file_batch.write(text_box.get(1.0, END)
+  file_batch.close()
+  subprocess.call([os.path.realpath("minimal_editor.bat")])
+
 # Warning (to keep you safe)
 def warnclose():
     if messagebox.askokcancel("Quit", "Have you saved your file? Ctrl+S is not functional."):
@@ -103,6 +110,7 @@ runMenu.add_command(label="Run Script as Python", command=_runModule)
 runMenu.add_command(label="Run Script as Lua", command=runLua)
 runMenu.add_command(label="Run File as Webpage (HTML)", command=html_page)
 runMenu.add_command(label="Run as JavaScript Page", command=js_page)
+runMenu.add_command(label="Run as Batch", command=bashRun)
 
 _menu.add_cascade(label="File", menu=fileMenu)
 _menu.add_cascade(label="Run", menu=runMenu)
