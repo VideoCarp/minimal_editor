@@ -28,7 +28,10 @@ def calc():
   calcwindow = Tk()
   calcwindow.configure(bg="#222")
   c_inputbox = Entry(bg="#222", fg="#aaa")
+  def doMath():
+    msgbox("Calculator", eval(c_inputbox.get()))
   calclabel = Label(bg="#222", fg="#aaa", text="Type a Math equation Below, eg: `1  + 1 * 6` then prsss 'submit'.")
+  c_submit = Button(bg="#222", fg="#aaa", text="Submit", command=doMath)
 
 
 
