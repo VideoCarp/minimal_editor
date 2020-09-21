@@ -87,9 +87,13 @@ def bashRun():
 
 # Warning (to keep you safe)
 def warnclose():
-    if tkmsg.askokcancel("Quit", "Have you saved your file? Ctrl+S is not functional."):
-        window.destroy()
+  if tkmsg.askyesno("Quit", "Save and Exit?"):
+    saveBox()
+    window.destroy()
+  else:
+    window.destroy()
 
+      
 window.protocol("WM_DELETE_WINDOW", warnclose)
 
 def saveBox():
