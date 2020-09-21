@@ -1,4 +1,4 @@
-# minimal_editor
+# Minimal Editor
 A minimal code editor, made with Python.<br>
 Do you not use Python? This editor, in it's beta release at least can run JavaScript, Lua, and Python.<br>
 Visit tags section.<br>
