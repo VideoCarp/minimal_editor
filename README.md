@@ -3,8 +3,8 @@ A minimal code editor, made with Python.<br>
 Do you not use Python? This editor, in it's beta release at least can run JavaScript, Lua, and Python.<br>
 Visit tags section.<br>
 [Beta Versions (see non-exe installation)](https://github.com/VideoCarp/minimal_editor/tree/betas)
-# Installation:
-Visit latest tag, first release: [here](https://github.com/VideoCarp/minimal_editor/releases/tag/v1.0.5)<br>
+**Beta Versions are HEAVILY recommended, some things may not function however, worth attempts.**
+# Installation
 Don't trust the exe file, or on another OS? Follow these steps:
 - Install Python (3.6+ should work)
 - Download ZIP archive (from tag)
