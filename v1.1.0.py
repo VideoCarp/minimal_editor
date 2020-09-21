@@ -5,6 +5,9 @@ from tkinter.scrolledtext import ScrolledText
 from tkinter import messagebox as tkmsg
 from tkinter import filedialog
 
+"""
+BETA INFO: Tabs
+"""
 
 
 # Initialize Window
