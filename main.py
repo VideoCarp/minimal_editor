@@ -77,9 +77,10 @@ text_box = ScrolledText(background="#222", foreground="#aaa") # Main Text Box
 def bashRun():
   msgbox("Run Batch", "Batch file ran successfully.")
   file_batch = open("minimal_editor.bat", "+w")
-  file_batch.write(text_box.get(1.0, END)
+  file_batch.write(text_box.get(1.0, END))
   file_batch.close()
-  subprocess.call([os.path.realpath("minimal_editor.bat")])
+  subprocess.call(os.path.realpath("minimal_editor.bat"))
+
 
 # Warning (to keep you safe)
 def warnclose():
