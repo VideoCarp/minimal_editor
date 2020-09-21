@@ -4,7 +4,7 @@ from tkinter import *; import os
 from tkinter.scrolledtext import ScrolledText
 from tkinter import messagebox as tkmsg
 from tkinter import filedialog
-
+from tkinter import simpledialog
 """
 BETA INFO: Tabs
 """
@@ -122,6 +122,14 @@ runMenu.add_command(label="Run as Batch", command=bashRun)
 
 _menu.add_cascade(label="File", menu=fileMenu)
 _menu.add_cascade(label="Run", menu=runMenu)
+
+# Tabs
+tabs = {}
+
+def newTab():
+  if tkmsg.askokcancel("Tab", "Create a new tab?"):
+    tbn = simpledialog.askstring("Tab Name", "What name should the tab have?")
+    tabs[tbn] = text_box.get(1.0, END)
 
 # West, East, North, South
 window.config(menu=_menu)
