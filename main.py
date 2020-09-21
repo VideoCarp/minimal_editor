@@ -74,6 +74,12 @@ def js_page():
 # The Input Box
 text_box = ScrolledText(background="#222", foreground="#aaa") # Main Text Box
 
+# Warning (to keep you safe)
+def warnclose():
+    if messagebox.askokcancel("Quit", "Have you saved your file? Ctrl+S is not functional."):
+        window.destroy()
+
+window.protocol("WM_DELETE_WINDOW", warnclose)
 
 def saveBox():
   files = [('All Files', '*.*'),  
