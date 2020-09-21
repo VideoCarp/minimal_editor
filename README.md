@@ -4,7 +4,7 @@ Do you not use Python? This editor, in it's beta release at least can run JavaSc
 Visit tags section.<br>
 [Beta Versions (see non-exe installation)](https://github.com/VideoCarp/minimal_editor/tree/betas)
 # Installation:
-Visit latest tag, first release: [here](https://github.com/VideoCarp/minimal_editor/releases/tag/v1.0.0)<br>
+Visit latest tag, first release: [here](https://github.com/VideoCarp/minimal_editor/releases/tag/v1.0.5)<br>
 Don't trust the exe file, or on another OS? Follow these steps:
 - Install Python (3.6+ should work)
 - Download ZIP archive (from tag)
