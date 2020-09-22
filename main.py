@@ -7,47 +7,49 @@ from tkinter import filedialog
 
 
 
-# Initialize Window
+# Manage window
 window = Tk()
 
 window.title("Notepad--")
 #window.iconbitmap("icon.ico")
-
-# Set up
 window.configure(bg="#222")
 window.configure(width = 200, height = 100)
 window.tk.call('tk', 'scaling', 3.0) # Fix resolution
 
 
 # Main
+
+# main.funcs
 def msgbox(title, desc):
   tkmsg.showinfo(title, desc)
 
-# OpenFile
+def saveBox():
+  files = [('All Files', '*.*'),  
+          ('Python Files', '*.py'), 
+          ('Text Document', '*.txt')] 
+  
+  file = filedialog.asksaveasfile(filetypes = files, defaultextension = files)
+  file.write(text_box.get(1.0, END)); file.close()
+  msgbox("Saved", "File has been saved successfully.")
+
+
 def openDialog():
   openableTypes = [("All Files", "*"), ("Python Files", "*.py"), ("Text Files", "*.txt")]
-  # Types of files, (Name, Extension)
   openedPath = filedialog.askopenfilename(filetypes=openableTypes)
-  # The path to the opened file.
   opened = open(openedPath)
-  # May be useless, but just to be safe, direct open through variable.
   readOpened = opened.read()
-  # Reads Opened file
   opened.close()
-  # Close opened file
   text_box.delete(1.0, END)
-  # Remove all text
   text_box.insert(1.0, readOpened)
-  # Write down into text box.
   msgbox("Opened", "File opened successfully.")
 
-# Run As Python
+
 def _runModule():
   msgbox('Ran as Python', "Successfully ran file.")
   eval(text_box.get(1.0, END))
 
 
-# Run As Lua
+
 def runLua():
   msgbox("Ran as Lua.", "Successfully ran file.")
   luaGen = open("minimal_luaexec.lua", "+w")
@@ -55,7 +57,7 @@ def runLua():
   subprocess.check_output(['lua', '-l', 'demo', '-', 'minimal_luaexec.lua'])
   luaGen.close()
 
-# HTML
+
 def html_page():
   msgbox("HTML", "Ran HTML file successfully.")
   min_html = open("minimal_html.html", "+w")
@@ -63,7 +65,7 @@ def html_page():
   min_html.close()
   webbrowser.open(f"file://{os.path.realpath('minimal_html.html')}")
 
-# JavaScript
+
 def js_page():
   msgbox("JavaScript", "Ran JavaScript as webpage successfully. Node.js is currently unsupported, manually run.")
   min_js = open("minimal_js.html", "+w")
@@ -71,8 +73,6 @@ def js_page():
   min_js.close()
   webbrowser.open(f"file://{os.path.realpath('minimal_js.html')}")
 
-# The Input Box
-text_box = ScrolledText(background="#222", foreground="#aaa") # Main Text Box
 
 def bashRun():
   msgbox("Run Batch", "Batch file ran successfully.")
@@ -82,7 +82,7 @@ def bashRun():
   subprocess.call(os.path.realpath("minimal_editor.bat"))
 
 
-# Warning (to keep you safe)
+
 def warnclose():
   if tkmsg.askyesno("Quit", "Save and Exit?"):
     saveBox()
@@ -96,13 +96,13 @@ def saveBox():
   files = [('All Files', '*.*'),  
           ('Python Files', '*.py'), 
           ('Text Document', '*.txt')] 
-  # Ask Dialog
+  
   file = filedialog.asksaveasfile(filetypes = files, defaultextension = files)
-  # Write and Close
   file.write(text_box.get(1.0, END)); file.close()
-  # Confirm
   msgbox("Saved", "File has been saved successfully.")
 
+# Main.widgets
+text_box = ScrolledText(background="#222", foreground="#aaa")
 # Menus
 _menu = Menu()
 fileMenu = Menu(_menu, tearoff=0)
@@ -116,10 +116,11 @@ runMenu.add_command(label="Run File as Webpage (HTML)", command=html_page)
 runMenu.add_command(label="Run as JavaScript Page", command=js_page)
 runMenu.add_command(label="Run as Batch", command=bashRun)
 
+
 _menu.add_cascade(label="File", menu=fileMenu)
 _menu.add_cascade(label="Run", menu=runMenu)
 
-# West, East, North, South
+# West, East, North, South (sticky=) options
 window.config(menu=_menu)
 text_box.grid(column=1, row=2)
 window.mainloop()
