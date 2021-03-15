@@ -101,6 +101,10 @@ def saveBox():
   file.write(text_box.get(1.0, END)); file.close()
   msgbox("Saved", "File has been saved successfully.")
 
+def saveHotkey(event): # Event argument neededin order for func to work.
+  print("Save hotkey pressed")
+  saveBox()
+
 # Main.widgets
 text_box = ScrolledText(background="#222", foreground="#aaa")
 # Menus
@@ -119,6 +123,9 @@ runMenu.add_command(label="Run as Batch", command=bashRun)
 
 _menu.add_cascade(label="File", menu=fileMenu)
 _menu.add_cascade(label="Run", menu=runMenu)
+
+# Detects keypress. Check this stackoverflow answer if you want to use other key presses: https://stackoverflow.com/a/16082411
+window.bind("<Control-s>", saveHotkey)
 
 # West, East, North, South (sticky=) options
 window.config(menu=_menu)
